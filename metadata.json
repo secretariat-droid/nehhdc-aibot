@@ -1,0 +1,6 @@
+{
+  "name": "Ask NEHHDC - Virtual Information Assistant",
+  "description": "Official AI-powered virtual information assistant for the North Eastern Handicrafts and Handlooms Development Corporation Ltd. (NEHHDC), Ministry of DoNER, Government of India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

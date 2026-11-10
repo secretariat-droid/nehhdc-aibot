@@ -93,18 +93,30 @@ npx --yes tsx --test src/utils/retrieval.test.ts
 
 ---
 
-## 5. Website Integration (Embedding into www.nehhdc.com)
+## 5. Website Integration (Dedicated /embed Route for www.nehhdc.com)
 
-NEHHDC's technical team can embed this floating chatbot into any page of the official website using either of two methods:
+NEHHDC's technical team can embed the chatbot into the official website (`https://www.nehhdc.com`) using the dedicated chat-only `/embed` route:
 
-### Method A: Floating Widget Script (Recommended)
-Paste this snippet before the closing `</body>` tag of your site templates:
+**Dedicated Embed URL**: `https://nehhdc-aibot.onrender.com/embed`
+
+When loaded via `/embed`, the page displays **ONLY** the Ask NEHHDC chat interface (header, conversation bubbles, suggested questions chips, message input bar, and disclaimer) with 100% responsive width and height. All testing dashboards, sample backdrops, and floating launcher buttons are excluded.
+
+### Content Security Policy (CSP) & Iframe Permission:
+The server automatically sets:
+```http
+Content-Security-Policy: frame-ancestors 'self' https://www.nehhdc.com https://nehhdc.com http://localhost:* https://*.onrender.com;
+```
+This permits seamless iframe embedding on `https://www.nehhdc.com` while maintaining security.
+
+### Method A: Floating Widget on Every Page of nehhdc.com (Recommended)
+Paste this snippet before the closing `</body>` tag on `www.nehhdc.com`:
 
 ```html
+<!-- Ask NEHHDC Floating Widget Embed -->
 <script>
   (function () {
     var iframe = document.createElement('iframe');
-    iframe.src = 'https://YOUR-APPLET-URL.run.app';
+    iframe.src = 'https://nehhdc-aibot.onrender.com/embed';
     iframe.style.position = 'fixed';
     iframe.style.bottom = '20px';
     iframe.style.right = '20px';
@@ -123,14 +135,12 @@ Paste this snippet before the closing `</body>` tag of your site templates:
 </script>
 ```
 
-### Method B: Standard Iframe Embed
-For embedding inside a dedicated page (e.g., `nehhdc.com/virtual-assistant`):
-
+### Method B: Dedicated Assistant Page (e.g., `nehhdc.com/ask-nehhdc`)
 ```html
 <iframe 
-  src="https://YOUR-APPLET-URL.run.app" 
+  src="https://nehhdc-aibot.onrender.com/embed" 
   title="Ask NEHHDC Virtual Assistant"
-  style="width: 100%; height: 700px; border: 1px solid #e2e8f0; border-radius: 12px;"
+  style="width: 100%; height: 680px; border: none; border-radius: 12px;"
   allow="clipboard-write">
 </iframe>
 ```

@@ -48,6 +48,15 @@ export const PortalBackdrop: React.FC<PortalBackdropProps> = ({
               Official Website: nehhdc.com <ExternalLink className="w-3 h-3" />
             </a>
             <span className="text-slate-600">|</span>
+            <a
+              href="/embed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
+            >
+              <ExternalLink className="w-3 h-3" /> /embed View
+            </a>
+            <span className="text-slate-600">|</span>
             <button
               onClick={onOpenEmbedGuide}
               className="text-amber-300 hover:text-amber-200 font-medium flex items-center gap-1 cursor-pointer"

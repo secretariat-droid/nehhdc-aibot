@@ -16,7 +16,21 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+
+// Determine port: Render assigns PORT (e.g. 10000); AI Studio container uses 3000 (reverse-proxied from 8080)
+const PORT = process.env.RENDER || (process.env.PORT && process.env.PORT !== '8080')
+  ? Number(process.env.PORT)
+  : 3000;
+
+// Content Security Policy: Permit iframe embedding on official NEHHDC domain
+app.use((_req: Request, res: Response, next: () => void) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "frame-ancestors 'self' https://www.nehhdc.com https://nehhdc.com http://localhost:* https://*.onrender.com;"
+  );
+  res.removeHeader('X-Frame-Options');
+  next();
+});
 
 // Security & Body parsing
 app.use(express.json({ limit: '100kb' }));

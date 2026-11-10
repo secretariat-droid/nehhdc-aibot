@@ -176,7 +176,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   }
 
   const containerClasses = isEmbedded
-    ? "w-full h-full flex flex-col bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden"
+    ? "w-full h-full flex flex-col bg-white overflow-hidden"
     : `fixed bottom-4 right-4 z-50 flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-300 overflow-hidden transition-all duration-200 ${
         isExpanded
           ? "w-[92vw] sm:w-[680px] h-[88vh] max-w-4xl"

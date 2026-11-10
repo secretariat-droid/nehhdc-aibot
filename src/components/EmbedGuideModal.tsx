@@ -16,7 +16,8 @@ export const EmbedGuideModal: React.FC<EmbedGuideModalProps> = ({ isOpen, onClos
 <script>
   (function () {
     var iframe = document.createElement('iframe');
-    iframe.src = window.location.origin; // Or deployed AI Studio / Cloud Run URL
+    // Dedicated chat-only embed URL
+    iframe.src = 'https://nehhdc-aibot.onrender.com/embed';
     iframe.style.position = 'fixed';
     iframe.style.bottom = '20px';
     iframe.style.right = '20px';
@@ -35,9 +36,9 @@ export const EmbedGuideModal: React.FC<EmbedGuideModalProps> = ({ isOpen, onClos
 </script>`;
 
   const iframeSnippet = `<iframe 
-  src="https://YOUR-APPLET-URL.run.app" 
+  src="https://nehhdc-aibot.onrender.com/embed" 
   title="Ask NEHHDC Virtual Assistant"
-  style="position: fixed; bottom: 20px; right: 20px; width: 420px; height: 620px; border: none; z-index: 999999; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.18);"
+  style="width: 100%; height: 640px; border: none; border-radius: 12px;"
   allow="clipboard-write">
 </iframe>`;
 
